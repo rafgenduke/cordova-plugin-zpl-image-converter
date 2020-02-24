@@ -15,8 +15,9 @@ Hi! This cordova plugin converts images to ZPL-Code. To use this plugin you need
         // Your error-handling
     });
 
-    If you set the height and width parameters to null, no scaling will be performed.
+    If you set the height and width parameters to 0, no scaling will be performed.
 
 ## Special Mentions
 
 Based on: http://www.jcgonzalez.com/java-image-to-zpl-example
+Git-Repo: https://github.com/rafgenduke/cordova-plugin-zpl-image-converter
