@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-zpl-image-converter",
+  "version": "0.1.0",
+  "description": "ZPL Image Converter Cordova Plugin",
+  "cordova": {
+    "id": "cordova-plugin-zpl-image-converter",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "David Herzog",
+  "license": "Apache 2.0"
+}
