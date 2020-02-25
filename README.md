@@ -9,11 +9,13 @@ Hi! This cordova plugin converts images to ZPL-Code. To use this plugin you need
 
 ## Usage
 
-    (window as any).plugins.zplImageConverter.convertImage(filePath: string, width: number, height: number, zplCode => {
+    (window as any).plugins.zplImageConverter.convertImage(filePath: string, width: number, height: number, angle: number, zplCode => {
         // Your code
       }, err => {
         // Your error-handling
     });
+
+    angle describes the rotation of the image
 
     If you set the height and width parameters to 0, no scaling will be performed.
 

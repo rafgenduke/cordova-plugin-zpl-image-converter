@@ -9,8 +9,8 @@ module.exports = zplImageConverter;
  */
 function ZPLImageConverter() {}
 
-ZPLImageConverter.prototype.convertImage = function(fileName, width, height, success, failure) {
-    exec(success, failure, "ZPLImageConverter", "convertImage", [fileName, width, height]);
+ZPLImageConverter.prototype.convertImage = function(fileName, width, height, angle, success, failure) {
+    exec(success, failure, "ZPLImageConverter", "convertImage", [fileName, width, height, angle]);
 }
 
 ZPLImageConverter.install = function() {

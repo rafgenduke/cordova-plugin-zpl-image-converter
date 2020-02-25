@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.graphics.Matrix;
 
 public class ZPLImageConverter extends CordovaPlugin{
     private int blackLimit = 380;
@@ -205,6 +206,11 @@ public class ZPLImageConverter extends CordovaPlugin{
     public void setBlacknessLimitPercentage(int percentage){
         blackLimit = (percentage * 768 / 100);
     }
+    public Bitmap rotateBitmap(Bitmap image, int angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
+    }
     
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -215,7 +221,7 @@ public class ZPLImageConverter extends CordovaPlugin{
                 //options.inSampleSize = 8;
                 options.inMutable = true;
                 Bitmap originalImage = BitmapFactory.decodeFile(fname, options);
-                 if (args.getInt(1) != 0 && args.getInt(2) != 0) {
+                if (args.getInt(1) != 0 && args.getInt(2) != 0) {
                     int newWidth;
                     int newHeight;
                     if (originalImage.getWidth() > originalImage.getHeight()) {
@@ -228,6 +234,7 @@ public class ZPLImageConverter extends CordovaPlugin{
                     originalImage = Bitmap.createScaledBitmap(originalImage,newWidth,newHeight,false);
                 }
                 ZPLImageConverter zp = new ZPLImageConverter();
+                originalImage = zp.rotateBitmap(originalImage, args.getInt(3));
                 zp.setCompressHex(true);
                 zp.setBlacknessLimitPercentage(50);
                 callbackContext.success(zp.convertfromImg(originalImage));
